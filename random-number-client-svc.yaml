@@ -6,7 +6,6 @@ spec:
   selector:
     app: random-number-client
   ports:
-  - port: 8080         
+  - port: 80         
     targetPort: 5000 
-    nodePort: 30080
-  type: LoadBalancer
+  type: ClusterIp

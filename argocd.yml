@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: randomnuber
+  namespace: argo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sakapen-2/random-number.git
+    path: .
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: randomnumber
+  syncPolicy:
+    automated:
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s

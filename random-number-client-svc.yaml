@@ -8,5 +8,5 @@ spec:
   ports:
   - port: 8080         
     targetPort: 5000 
-    nodePort: 30080 # Static NodePort in the range 30000–32767 (optional)
-  type: NodePort
+    nodePort: 30080
+  type: LoadBalancer
